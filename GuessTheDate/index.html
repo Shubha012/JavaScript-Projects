@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Guess The Date</title>
+</head>
+<body>
+    <div class="main">
+        <h2> Data Guesser </h2>
+        <p>
+            Guesses the Date within the Range
+        </p>
+        <p class="Start">Start Date</p><input type="text" id="Start">
+        <p class="end">End Date</p><input type="text" id="end">
+        <p class="exception">Any unexpectable date</p> <input type="text" id="exception">
+
+        <h3 class="Output"></h3>
+
+        <br>
+        <button>
+            Click to know the Date 
+        </button>
+
+    </div>
+</body>
+
+<script>
+    
+    function guessDate(){
+
+        let start = Number(document.querySelector("#Start").value.split('-')[0]);
+        console.log(start)
+        let end = Number(document.querySelector("#end").value.split('-')[0]);
+        let excep = Number(document.querySelector("#exception").value.split('-')[0]);
+    
+        const date = Math.floor(Math.random() * (end - start + 1)) + start    
+        
+        // console.log(date)
+        if(date>=start && date<=end && date!=excep){
+            document.querySelector("h3").innerHTML = `December ${date}, 2025`
+        }
+        else guessDate()
+    }
+    document.querySelector("button").addEventListener('click', guessDate);
+
+</script>
+</html>
